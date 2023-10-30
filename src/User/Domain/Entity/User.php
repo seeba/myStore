@@ -7,12 +7,18 @@ use App\User\Domain\Event\UserCreateEvent;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
+#[UniqueEntity('email')]
 class User extends AggregateRoot implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    
+    private UserPasswordHasherInterface $passwordHasher;
+
     private ?string $id = null;
 
+    
     private ?string $email = null;
 
     private array $roles = [];
@@ -25,6 +31,7 @@ class User extends AggregateRoot implements UserInterface, PasswordAuthenticated
     public function __construct(string $id)
     {
         $this->id = $id;
+        
     }
     
     public function getId(): ?string

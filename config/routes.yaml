@@ -3,8 +3,8 @@ api_login_check:
 api_refresh_token:
     path: /api/token/refresh
 
-controllers:
+user_controllers:
     resource:
-        path: ../src/Controller/
-        namespace: App\Controller
+        path: ../src/User/Application/Controller/Api
+        namespace: App\User\Application\Controller\Api
     type: attribute

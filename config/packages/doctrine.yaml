@@ -21,6 +21,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/User/Infrastructure/DoctrineMapping'
                 prefix: 'App\User\Domain\Entity'
                 alias: 'App\User\Domain'
+            Log:
+                type: xml
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Logger/Infrastructure/DoctrineMapping'
+                prefix: 'App\Logger\Domain\Entity'
+                alias: 'App\Logger\Domain'
 
 when@test:
     doctrine:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Aoo\User\Domain\EventListener;
+namespace App\User\Domain\EventListener;
 
 use Symfony\Component\Security\Http\Event\LoginSuccessEvent;
 

@@ -4,4 +4,5 @@ namespace App\Shared\Event;
 
 interface DomainEventInterface
 {
+  
 }

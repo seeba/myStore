@@ -7,7 +7,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 
 final class UserCreateEvent extends Event implements DomainEventInterface 
 {
-    public const NAME = 'user.create';
+    public const NAME = 'user.created';
     
     private string $userId;
     private string $email;
