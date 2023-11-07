@@ -24,5 +24,10 @@ services:
             - { name: kernel.event_listener, event: user.created}
         arguments:
             - '@monolog.logger.doctrinelogger'
+    App\Product\Domain\EventListener\ProductCreateListener:
+        tags: 
+            - { name: kernel.event_listener, event: product.created}
+        arguments:
+            - '@monolog.logger.doctrinelogger'
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones

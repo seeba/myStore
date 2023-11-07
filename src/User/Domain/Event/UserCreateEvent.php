@@ -9,14 +9,10 @@ final class UserCreateEvent extends Event implements DomainEventInterface
 {
     public const NAME = 'user.created';
     
-    private string $userId;
-    private string $email;
-
-    public function __construct(string $userId, string $email)
-    {
-        $this->userId = $userId;
-        $this->email = $email;       
-    }
+    public function __construct(
+        private string $userId, 
+        private string $email)
+    {}
 
     public function getUserId(): string
     {

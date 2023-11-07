@@ -4,14 +4,12 @@ namespace App\User\Application\Command;
 
 class CreateUserCommand 
 {
-    private string $password;
-    private string $email;
-
-    public function __construct($email, $password)
-    {
-            $this->password = $password;
-            $this->email = $email;    
-    }
+    
+    public function __construct(
+        private string $email, 
+        private string $password
+        )
+    {}
 
     public function getEmail(): string
     {

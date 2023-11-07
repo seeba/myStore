@@ -27,6 +27,12 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Logger/Infrastructure/DoctrineMapping'
                 prefix: 'App\Logger\Domain\Entity'
                 alias: 'App\Logger\Domain'
+            Product:
+                type: xml
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Product/Infrastructure/DoctrineMapping'
+                prefix: 'App\Product\Domain\Entity'
+                alias: 'App\Product\Domain'
 
 when@test:
     doctrine:
