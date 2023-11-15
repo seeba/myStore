@@ -1,16 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Product\Domain\Entity;
 
+use App\Product\Domain\Event\ProductCreateEvent;
 use App\Shared\Aggregate\AggregateRoot;
-use Ramsey\Uuid\Uuid;
+use App\Product\Domain\Entity\ProductId;
 
 class Product extends AggregateRoot 
 {
-    private ?string $id = null;
+    private ?ProductId $id = null;
     private string $name;
     
-    public function __construct(string $id)
+    public function __construct(ProductId $id)
     {
         $this->id = $id;
     }
@@ -34,11 +37,11 @@ class Product extends AggregateRoot
 
     public static function createProduct(string $name): self
     {
-        $productId = Uuid::uuid4()->toString();
+        $productId = ProductId::random();
         $product = new Product($productId);
         $product->setName($name);
 
-        // #todo add event
+        $product->recordDomainEvent(new ProductCreateEvent($productId, $name));
 
         return $product;
     }

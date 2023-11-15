@@ -16,7 +16,8 @@ class ProductCreateListener
     {
         
         $this->logger->info('Właśnie utworzyłeś produkt', [
-            'name' => $event->getName()
+            'name' => $event->getName(),
+            'id' => $event->getProductId()
         ]);
     
     }

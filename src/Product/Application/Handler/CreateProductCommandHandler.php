@@ -2,17 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\User\Application\Handler;
+namespace App\Product\Application\Handler;
 
 use App\Product\Domain\Entity\Product;
 use App\Product\Domain\Repository\ProductRepositoryInterface;
 use App\Products\Application\Command\CreateProductCommand;
-
-use App\User\Domain\Repository\UserRepositoryInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 #[AsMessageHandler]
@@ -38,7 +35,6 @@ class CreateProductCommandHandler
         $this->productRepository->save($product);
 
         foreach ($product->pullDomainEvents() as $domainEvent) {
-            dump($domainEvent);
             $this->eventDispather->dispatch($domainEvent, $domainEvent::NAME);      
         }   
     }

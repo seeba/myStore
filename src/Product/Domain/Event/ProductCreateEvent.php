@@ -2,6 +2,8 @@
 
 namespace App\Product\Domain\Event;
 
+use App\Product\Domain\Entity\ProductId;
+use App\Product\Infrastructure\Repository\ProductRepository;
 use App\Shared\Event\DomainEventInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
@@ -10,11 +12,11 @@ final class ProductCreateEvent extends Event implements DomainEventInterface
     public const NAME = 'product.created';
     
     public function __construct(
-        private string $productId, 
+        private ProductId $productId, 
         private string $name)
     {}
 
-    public function getProductId(): string
+    public function getProductId(): ProductId
     {
         return $this->productId;
     }
